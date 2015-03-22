@@ -24,13 +24,17 @@ class PyDyParticle(Body):
         self.angle = angle
         self.mass = symbols(name + '_mass')
         self.point = Point(name + '_point')
+        self.ref_frame = ref_frame
+        self.name = self.name
         if ref_frame is not None:
             self.frame = ref_frame.orientnew(name + '_frame', 'Axis', [dynamicsymbols(angle), vector])
             self.q_ind = dynamicsymbols(angle)
+            self.point.set_vel(self.frame, 0)
+            self.point.set_vel(ref_frame, 0)
         else:
             self.frame = None
             self.q_ind = None
-        self.body = Particle(name, self.point, self.mass)
+        self.body = Particle(name + '_body', self.point, self.mass)
         self.force = None
         self.u_ind = None
 
@@ -56,8 +60,9 @@ class PyDyParticle(Body):
         self.force = (self.point, value * vector)
 
     def set_point(self, distance, ref_point, vector):
-        # self.q_ind = symbols(distance)
-        self.point = ref_point.locatenew(self.name + '_point', self.q_ind * vector)
+        self.point = ref_point.locatenew(self.name + '_point', dynamicsymbols(distance) * vector)
+        self.point.set_vel(self.ref_frame, 0)
+        self.point.set_vel(self.frame, 0)
 
 class PyDyRigidBody(Body):
     """

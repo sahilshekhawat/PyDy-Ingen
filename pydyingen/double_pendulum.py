@@ -13,10 +13,13 @@ par2 = PyDyParticle('par2', sys.root_frame, 'q2', sys.root_frame.z)
 sys.add_body(par1)
 sys.add_body(par2)
 
-par1.set_point('l', sys.origin, par1.frame.x)
-par2.set_point('l', par1.point, par2.frame.x)
-
 par1.set_ang_vel('u1', sys.root_frame, sys.root_frame.z, dynamic=True)
 par2.set_ang_vel('u2', sys.root_frame, sys.root_frame.z, dynamic=True)
+
+par1.set_point('l', sys.root_body.point, par1.frame.x)
+par2.set_point('l', par1.point, par2.frame.x)
+
+sys.root_body.connect_body(par1)
+par1.connect_body(par2)
 
 kanes_equations = sys.evaluate()

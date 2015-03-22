@@ -1,5 +1,5 @@
-#### Follows is double pendulum example as in pydy/examples/double_pendulum/double_pendulum.py
-
+**Follows is double pendulum example as in pydy/examples/double_pendulum/double_pendulum.py**
+```
 from pydyingen import PyDyParticle, MultiBodySystem
 
 sys = MultiBodySystem('sys')
@@ -19,4 +19,4 @@ par1.set_ang_vel('u1', sys.root_frame, sys.root_frame.z, dynamic=True)
 par2.set_ang_vel('u2', sys.root_frame, sys.root_frame.z, dynamic=True)
 
 kanes_equations = sys.evaluate()
-
+```
