@@ -1,4 +1,4 @@
-### Example
+#### Follows is double pendulum example as in pydy/examples/double_pendulum/double_pendulum.py
 
 from pydyingen import PyDyParticle, MultiBodySystem
 

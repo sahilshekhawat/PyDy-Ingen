@@ -10,7 +10,6 @@ sys.gravity_vector = sys.root_frame.x
 par1 = PyDyParticle('par1', sys.root_frame, 'q1', sys.root_frame.z)
 par2 = PyDyParticle('par2', sys.root_frame, 'q2', sys.root_frame.z)
 
-
 sys.add_body(par1)
 sys.add_body(par2)
 
