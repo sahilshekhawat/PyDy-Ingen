@@ -22,4 +22,4 @@ par2.set_point('l', par1.point, par2.frame.x)
 sys.root_body.connect_body(par1)
 par1.connect_body(par2)
 
-kanes_equations = sys.evaluate()
+KM = sys.evaluate()
